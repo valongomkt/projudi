@@ -9,11 +9,12 @@ app.post('/consulta', async (req, res) => {
   if (!documento) return res.status(400).json({ error: 'CPF/CNPJ obrigatório' });
 
   try {
-    const browser = await puppeteer.launch({
-      headless: true,
-      executablePath: puppeteer.executablePath(),
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
+  const browser = await puppeteer.launch({
+  headless: true,
+  executablePath: puppeteer.executablePath(), // Render usa esse caminho automaticamente
+  args: ['--no-sandbox', '--disable-setuid-sandbox']
+});
+
 
     const page = await browser.newPage();
     await page.goto('https://projudi.tjgo.jus.br/');
