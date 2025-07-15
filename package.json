@@ -1,16 +1,14 @@
 {
-  "name": "projudi-api",
+  "name": "projudi",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "npx puppeteer install",
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "express": "^5.1.0",
-    "puppeteer": "^24.12.1"
+    "express": "^4.18.2",
+    "puppeteer": "^22.7.1"
   }
 }
