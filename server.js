@@ -8,19 +8,19 @@ app.post('/consulta', async (req, res) => {
   if (!documento) return res.status(400).json({ error: 'CPF/CNPJ obrigatório' });
 
   try {
-    const browser = await puppeteer.launch({ headless: true });
-    const page = await browser.newPage();
+    const browser = await puppeteer.launch({
+      headless: true,
+      executablePath: puppeteer.executablePath(), // ESSENCIAL PARA FUNCIONAR NO RENDER
+      args: ['--no-sandbox', '--disable-setuid-sandbox'] // segurança no ambiente cloud
+    });
 
-    // Exemplo fictício de navegação
+    const page = await browser.newPage();
     await page.goto('https://projudi.tjgo.jus.br/');
     await page.waitForTimeout(2000);
 
-    // Simula busca do documento (você deve adaptar à estrutura real do Projudi)
-    // await page.type('#cpfField', documento); // exemplo fictício
-    // await page.click('#searchBtn'); // exemplo fictício
-
+    // Simulação: Substituir por scraping real do Projudi
     const resultado = {
-      status: 'encontrado', // ou 'nao_encontrado'
+      status: 'encontrado',
       processos: [
         { numero: '123456-89.2024.8.09.0001', vara: '2ª Vara Cível' }
       ]
